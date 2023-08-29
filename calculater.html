@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <style>
+        body{
+            background-color: white;
+        }
+            body > h1{
+                text-align: center;
+            }
+            body > div{
+                height: 400px;
+                width : 350px;
+                border : 1px solid white;
+                margin:auto;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            }
+            #show{
+                height:60px;
+                width: 80%;
+                margin:auto;
+                margin-top:20px;
+                display: flex;
+                font-size: 30px;
+                align-items: center;
+                justify-content: center;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+            #keys{
+                height:280px;
+                width : 80%;
+                margin:auto;
+                margin-top:15px;
+                display: grid;
+                grid-template-rows : 1fr 1fr 1fr 1fr;
+                grid-template-columns : 1fr 1fr 1fr 1fr;
+                gap: 15px;
+            }
+            #keys > div{
+                border: 1px solid black;
+                display:flex;
+                font-size: 30px;
+                align-items: center;
+                justify-content: center;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            }
+            #keys > div:hover{
+                cursor: pointer;
+                background-color: greenyellow;
+            }
+
+            #red{
+                background-color: red;
+            }
+            #green{
+                background-color:green;
+            }
+            .blue{
+                background-color:blue;
+            }
+            .white{
+                color:white;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>My Calculater</h1>
+        <div>
+            <div id="show"></div>
+            <div id="keys">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div class="blue white">/</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div class="blue white">*</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div class="blue white">+</div>
+                <div id="red" class="white">C</div>
+                <div>0</div>
+                <div id="green" class="white">=</div>
+                <div class="blue white">-</div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    var num = document.querySelectorAll("#keys>div")
+    var bag = "";
+        for(var i = 0; i< num.length; i++){
+            addEventListener("click", knowNum)
+        }
+        
+        function knowNum(){
+           var targetNum = event.target.innerText
+           if(targetNum == "C"){
+            document.querySelector("#show").innerText= ""
+           }else if(targetNum == "="){
+            document.querySelector("#show").innerText = eval(bag)
+           }
+           else{
+            bag+= targetNum;
+           document.querySelector("#show").innerText= bag
+           }
+           
+        }
+
+</script>
